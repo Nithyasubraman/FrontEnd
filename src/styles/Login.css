@@ -1,0 +1,88 @@
+.login {
+  width: 400px;
+  background: #fff;
+  border: 1px solid #dddfe2;
+  box-shadow: 0 2px 4px rgb(0 0 10 / 64%), 0 8px 16px rgb(0 10 0 / 34%);
+  border-radius: 8px;
+  padding: 1rem;
+  align-items: center;
+  text-align: center;
+}
+
+.login > form input {
+  border-radius: 20px;
+  border: 2px solid lightgrey;
+  outline: none;
+  color: #1d2129;
+  margin: 2% 0;
+  width: 90%;
+  padding: 12px;
+  font-size: 16px;
+}
+
+
+
+
+
+
+
+
+
+/* .login {
+    text-align: center;
+    box-shadow: 0 2px 4px rgb(0 0 10 / 64%), 0 8px 16px rgb(0 10 0 / 34%);
+    width: 400px;
+    background: #fff;   
+    border-radius: 8px;
+    padding: 4rem;
+    align-items: center; 
+    text-align: center;
+    border: 1px solid #dddfe2;
+    margin: auto;
+  }
+  
+  .login form {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  
+  .login label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .login input {
+    padding: 8px 12px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .login button {
+    padding: 8px 16px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 150px;
+    align-items: center;
+    margin: auto;
+    font-size: 22px;
+    border-radius: 15px;
+  } */
+
+
+/* .login > form input {
+    border-radius: 20px;
+    border: 2px solid lightgrey;
+    outline: none;
+    color: #1d2129;
+    margin: 2% 0;
+    width: 90%;
+    padding: 12px;
+    font-size: 16px;
+} */

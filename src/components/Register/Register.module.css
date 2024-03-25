@@ -1,0 +1,36 @@
+.register {
+    width: 470px;
+    background: #7575847f;
+    border: 1px solid #dddfe2;
+    box-shadow: 0 2px 4px rgba(9, 8, 109, 0.1), 0 8px 16px rgb(0 0 0 / 10%);
+    border-radius: 8px;
+    padding: 1rem;
+    align-items: center;
+    text-align: center;
+    height: 570px;
+    margin: auto;
+    transform: translate(1%,2%);
+    margin-top: 7%;
+}
+
+.register > form input {
+    border-radius: 20px;
+    border: 2px solid lightgrey;
+    outline: none;
+    color: #1d2129;
+    margin: 2% 0;
+    width: 90%;
+    padding: 12px;
+    font-size: 16px;
+}
+
+h1
+{
+    margin-left: -60px;
+    
+}
+
+.rgpage
+{
+    /* background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHLU_WOcwVcoadqmb11Dz_H8XJQgnaLJys0oZPPd-5io0ZAZC9yYXecW_QHY_wPgjoz3I&usqp=CAU'); */
+}

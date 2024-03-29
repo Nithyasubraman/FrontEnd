@@ -1,6 +1,6 @@
 import React  from 'react'
 // import React, { useState } from 'react'
-import './login.css' 
+import './AdminLogin.css' 
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import PersonIcon from '@mui/icons-material/Person';
 // import KeyIcon from '@mui/icons-material/Key';
@@ -8,8 +8,7 @@ import { useForm } from 'react-hook-form'
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
-// import { Link, useNavigate } from 'react-router-dom';
-import {useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie'; // Import js-cookie
 // import Nav from 'react-bootstrap/Nav';
 // import Navbar from 'react-bootstrap/Navbar';
@@ -17,7 +16,7 @@ import Cookies from 'js-cookie'; // Import js-cookie
 // import PetsOutlinedIcon from '@mui/icons-material/PetsOutlined';
 // import { Button, NavItem } from 'react-bootstrap';
 // import { Link, NavLink } from 'react-router-dom';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 // import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
 // import {Row,Col} from 'react-bootstrap'
  
@@ -27,35 +26,33 @@ import { NavLink } from 'react-router-dom';
 const schema = yup.object().shape(
     {
         email: yup.string().email("**Invalid Email address").required("**Email is required"),
-        password: yup.string().required("**Password is Required").min(6, "**Minmun 4 chars is Required").max(14, "**Enter upto 6 chars is ")
+        password: yup.string().required("**Password is Required").min(6, "**Minmun 6 chars is Required").max(14, "**Enter upto 14 chars is ")
     }
 )
  
 // created a login function to validate the user.
  
-const Login = () => {
+const AdminLogin = () => {
  
     // Calling the below  functions will help us in accessing our data and error messages using hooks.
  
     const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(schema) });
  
-     const Usenavigate = useNavigate();
+    const Usenavigate = useNavigate();
  
    
  
     const onSubmit = data => {
       
  
-        axios.post('http://localhost:5122/api/Login/checkloginuser', data)
+        axios.post('http://localhost:5122/api/Login/checkloginadmin', data)
             .then(response => {
                 // Handle success
                 // window.alert("Login successfull");
  
-                console.log("id",response.data);
+                console.log(response.data);
                 Cookies.set('userid', response.data); // Set cookie with user email
-                // const userData = 
-                window.alert("Login successfull");
-                Usenavigate('/home');
+                Usenavigate('/admin');
  
             })
             .catch(error => {
@@ -97,7 +94,7 @@ const Login = () => {
                                 </div>
                                 <br/>
                                 {/* <Link to='/register'><AppRegistrationIcon/></Link> */}
-                                <NavLink to='/register' style={{ display: 'flex', justifyContent: 'flex-end' }}>Don't Have an account? Signup!</NavLink>
+                                {/* <NavLink to='/register' style={{ display: 'flex', justifyContent: 'flex-end' }}>Don't Have an account? Signup!</NavLink> */}
                             </form>
                         </div>
  
@@ -109,15 +106,7 @@ const Login = () => {
     )
 }
  
-export default Login
-
-
-
-
-
-
-
-
+export default AdminLogin    
 
 
 

@@ -1,0 +1,104 @@
+/* admin.css */
+
+.admin-container {
+  display: flex;
+}
+
+.nav-container {
+  display: flex;
+  flex-direction: column; 
+  /* align-items: flex-start;  */
+}
+
+.admin{
+    background-color: rgba(140, 217, 217, 0.234);
+    margin: 0%;
+    padding: 0%;
+    background-size: cover;
+    min-height: 800px;
+}
+
+.nav-button {
+  /* background-color: #f0f0f0; */
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-bottom: 10px; /* Add margin between buttons */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.nav-button:hover {
+  background-color: #e0e0e0;
+}
+
+.nav-button.active {
+  background-color: #1d1a1c9d;
+  color: #fff;
+}
+
+.page-container {
+  margin-left: 20px; /* Add margin to separate buttons from page content */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+
+.nav-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .nav-button {
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .nav-button:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .nav-button.active {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .page-container {
+    display: flex;
+    justify-content: center;
+  }
+   */

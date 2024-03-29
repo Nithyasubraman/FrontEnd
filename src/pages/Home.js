@@ -8,6 +8,10 @@ import { Card } from "../components/blog/Card"
 import Category from "../components/category/Category";
 import BlogList from "./BlogList";
 import TopBar from "../components/topbar/TopBar";
+import Comments from "../components/comments/Comments";
+import Navbar from "../components/Navbar";
+import LikeComment from "../components/LikeComment/LikeComment";
+import Cmnt from "../components/Cmnt/Cmnt";
 
 
 
@@ -24,12 +28,19 @@ function Home() {
     <>
     {/* <Header/> */}
     {/* <TopBar/> */}
+    {/* <TopBar/> */}
+    <Navbar/>
+        <br/>
+        <TopBar/>
     <BlogList/>
     <br/>
     <div className='home'>
       {/* <Category images={images}/> */}
       {/* <Category/> */}
-      <Posts/>
+      {/* <Posts/> */}
+      {/* <Comments/> */}
+      <Cmnt/>
+      {/* <LikeComment/> */}
       <Sidebar/>
         {/* <Card/> */}
       

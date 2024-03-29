@@ -1,0 +1,34 @@
+/* manageUsers.css */
+
+/* Style for the table */
+.table-container {
+    margin-top: 20px;
+  }
+  
+  /* Style for the table headers */
+  .table th {
+    text-align: center;
+    background-color:rgb(39, 39, 132);
+    color: white;
+  }
+  
+  /* Style for the table data */
+  .table td {
+    text-align: center;
+  }
+  
+  /* Style for the delete button */
+  .delete-button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .delete-button:hover {
+    background-color: #c82333;
+  }
+  

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Button, Card, CardBody, Container, Form } from "react-bootstrap";
 import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Navbar from "../Navbar";
+import TopBar from "../topbar/TopBar";
  
  
  
@@ -81,6 +83,12 @@ function Write() {
   };
  
   return (
+    <div className="writepage">
+       <Navbar/>
+        <br/>
+        <TopBar/>
+        <br/>
+        <br/>
     <Container>
       <br/>
       <br/>
@@ -146,7 +154,8 @@ function Write() {
             <Form.Group className="mb-3">
               <Form.Label> </Form.Label>
               <Form.Control
-                type="datetime-local"
+                type="date"
+                // type="datetime-local"
                 // type="text"
                 name="postedDate"
                 // value={values.PostedDate || getDefaultDateTime()}
@@ -205,10 +214,289 @@ function Write() {
         </CardBody>
       </Card>
     </Container>
+    </div>
   );
 }
    
 export default Write;
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import React, { useEffect, useState } from "react";
+// import { Button, Card, CardBody, Container, Form } from "react-bootstrap";
+// import axios from "axios";
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import Navbar from "../Navbar";
+// import TopBar from "../topbar/TopBar";
+// import Cookies from "js-cookie";
+ 
+
+
+
+//  const userid = Cookies.get('userid')
+//  console.log("user",userid);
+
+// const initialValues = {
+//   title: "",
+//   content: "",
+//   author: "",
+//   postedDate:"",
+//   tag:"",
+//   category:"",
+//   featuredImage: null,
+// };
+ 
+// function Write() {
+//   const [values, setValues] = useState(initialValues);
+//   const [authorName, setAuthor] = useState('');
+//   const currentdate = new Date().toLocaleDateString();
+
+//   const categories = [
+//     'Life',
+//     'News',
+//     'Sports',
+//     'Health',
+//     'Business',
+//     'Entertainment',
+//     'Technology',
+//     'Travel',
+//     'Others',
+//   ];
+  
+ 
+//   const handleInput = (e) => {
+//     setValues({
+//       ...values,
+//       [e.target.name]: e.target.value,
+//     });
+//   };
+
+//   // const getDefaultDateTime = () => {
+//   //   const now = new Date();
+//   //   const year = now.getFullYear();
+//   //   const month = String(now.getMonth() + 1).padStart(2, '0');
+//   //   const day = String(now.getDate()).padStart(2, '0');
+//   //   const hours = String(now.getHours()).padStart(2, '0');
+//   //   const minutes = String(now.getMinutes()).padStart(2, '0');
+  
+//   //   return `${year}-${month}-${day}T${hours}:${minutes}`;
+//   // };
+ 
+//   const handleImageChange = (e) => {
+//     setValues({
+//       ...values,
+//       featuredImage: e.target.files[0],
+//     });
+//   };
+ 
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     const formData = new FormData();
+//     Object.entries(values).forEach(([key, value]) => {
+//       formData.append(key, value);
+//     });
+ 
+//     try {
+//       const response = await axios.post(
+//         "http://localhost:5122/api/BlogPosts",
+//         formData,
+//         {
+//           headers: {
+//             "Content-Type": "multipart/form-data",
+//           },
+//         }
+//       );
+//       window.alert("Posted successfully");
+//       console.log("Posted successfully:", response.data);
+//     } catch (error) {
+//       console.error("Post failure:", error);
+//     }
+//   };
+
+  
+
+//   useEffect(()=>{
+//     fetchName(userid);
+//   })
+  
+
+//   const fetchName = async (userid) => {
+//     try {
+//         const response = await axios.get(`http://localhost:5122/api/Login/${userid}`);
+//         console.log(response.data.name)
+//         setAuthor(response.data.name)
+//     }
+//     catch (error) {
+//         console.error('Error fetching :',error);
+     
+//     }
+// };
+ 
+//   return (
+//     <div className="writepage">
+//        <Navbar/>
+//         <br/>
+//         <TopBar/>
+//         <br/>
+//         <br/>
+//     <Container>
+//       <br/>
+//       <br/>
+//       <Card style={{border:"none"}}>
+//         <CardBody>
+//           <Form onSubmit={handleSubmit}>
+//           <Form.Group className="mb-3">
+//   <Form.Label> </Form.Label>
+//   <Form.Control
+//     as="div"
+//     name="Image"
+//     // value={values.ImageUrl}
+//     // value={values.ImageUrl}
+//     style={{
+//       backgroundImage: `url(${'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStKLq5yQL4kp_cW87LMjy1QQxMONkVO751kg&usqp=CAU'})`,
+//       backgroundSize: 'cover',
+//       backgroundPosition: 'center',
+//       backgroundRepeat: 'no-repeat',
+//       height: '200px',
+//       width: '100%',
+//     }}
+//   />
+// </Form.Group>
+//             <Form.Group className="mb-3">
+//               <Form.Label> </Form.Label>
+//               <Form.Control
+//                 type="text"
+//                 name="title"
+//                 value={values.title}
+//                 placeholder="Title"
+//                 className='writeInput'
+//                 autoFocus={true}
+//                 style={{fontWeight:"bolder",fontSize:"20px",textAlign:"center"}} 
+//                 onChange={handleInput}
+//               />
+//             </Form.Group>
+
+//             {/* <Form.Group className="mb-3" > */}
+//             <Form.Group className="writeFormGroup" >
+//               <Form.Label> </Form.Label>
+//               <Form.Control
+//                 as="textarea"
+//                 name="content"
+//                 value={values.content}
+//                 placeholder="Content"
+//                 className='postDesc'
+//                 style={{height:"20vh"}}
+//                 onChange={handleInput}
+//               />
+//             </Form.Group>
+ 
+//             <Form.Group className="mb-3">
+//               <Form.Label> </Form.Label>
+//               <Form.Control
+//                 type="text"
+//                 name="author"
+//                 value={authorName}
+//                 placeholder="Author"
+//                 onChange={handleInput}
+//               />
+//             </Form.Group>
+ 
+//             <Form.Group className="mb-3">
+//               <Form.Label> </Form.Label>
+//               <Form.Control
+//                 type="text"
+//                 // type="datetime-local"
+//                 // type="text"
+//                 name="postedDate"
+//                 // value={values.PostedDate || getDefaultDateTime()}
+//                 value={currentdate}
+//                 placeholder="Posted Date"
+//                 onChange={handleInput}
+//               />
+//             </Form.Group>
+
+            
+//             <Form.Group className="mb-3">
+//               <Form.Label> </Form.Label>
+//               <Form.Control
+//                 //  type="datetime-local"
+//                 type="text"
+//                 name="tag"
+//                 value={values.tag}
+//                 // value={values.PostedDate || getDefaultDateTime()}
+//                 // value={values.tag}
+//                 placeholder="Tag"
+//                 onChange={handleInput}
+//               />
+//             </Form.Group>
+
+//             <Form.Group className="mb-3">
+//         <Form.Label> </Form.Label>
+//         <Form.Select
+//           name="category"
+//           value={values.category}
+//           onChange={handleInput}
+//         >
+//           <option value="">Select Category</option>
+//           {categories.map((category) => (
+//             <option key={category} value={category}>
+//               {category}
+//             </option>
+//           ))}
+//         </Form.Select>
+//       </Form.Group>
+ 
+           
+//             <Form.Group className="mb-3">
+//               <Form.Label> </Form.Label>
+//               <Form.Control
+//                 type="file"
+//                 name="featuredImage"
+//                 accept="image/*"
+//                 placeholder="Image to Upload"
+//                 className='writeImg'
+//                 onChange={handleImageChange}
+//               />
+//             </Form.Group>
+ 
+//             <Button type="submit" className="writeSubmit" style={{backgroundColor:"teal"}}>Publish</Button>
+//           </Form>
+//         </CardBody>
+//       </Card>
+//     </Container>
+//     </div>
+//   );
+// }
+   
+// export default Write;
  
 
 

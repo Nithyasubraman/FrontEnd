@@ -17,5 +17,27 @@
   .navbar-menu a {
     color: #fff;
     text-decoration: none;
-    margin-left: 20px;
+    margin-left: 50px;
   }
+
+
+  
+#logoutButton
+{
+    margin-top: 20px;
+    cursor: pointer;
+    background-color: rgba(31, 154, 179, 0.679);
+    border: none;
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    margin-right: 10px;
+}
+
+
+
+/* 
+  .logout
+  {
+    margin-right: 70vh;
+  } */

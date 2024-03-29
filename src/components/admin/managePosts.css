@@ -1,0 +1,54 @@
+
+
+/* .navbar {
+    background-color: #fff; 
+    border-bottom: 1px solid #ccc; 
+  } */
+  
+  .nav-text {
+    font-size: 1.2rem; /* Font size for nav text */
+  }
+  
+  .nav-sidetext {
+    font-size: 1rem; /* Font size for side nav text */
+  }
+  
+  .adminnav {
+    padding: 10px; /* Padding for navbar */
+  }
+  
+  .deleteaccessory {
+    display: flex; /* Display delete accessory items in flex layout */
+    flex-wrap: wrap; /* Wrap items if they exceed container width */
+    justify-content: space-around; /* Space items evenly */
+    padding: 20px; /* Padding for delete accessory section */
+  }
+  
+  .card {
+    margin-bottom: 20px; /* Margin bottom for cards */
+  }
+  
+  .card-img-top {
+    height: 200px; /* Set height for card image */
+    object-fit: cover; /* Cover the entire space with image */
+  }
+  
+  .card-title {
+    font-size: 1.2rem; /* Font size for card title */
+    margin-bottom: 10px; /* Margin bottom for card title */
+  }
+  
+  .card-text {
+    font-size: 1rem; /* Font size for card text */
+  }
+  
+  .btn-danger {
+    background-color: #dc3545; /* Button background color */
+    border-color: #dc3545; /* Button border color */
+  }
+  
+  .btn-danger:hover {
+    background-color: #c82333; /* Button background color on hover */
+    border-color: #bd2130; /* Button border color on hover */
+  }
+  

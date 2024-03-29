@@ -1,6 +1,12 @@
 .write
 {
     padding-top: 50px;
+
+}
+
+.writepage
+{
+    background-color: rgba(140, 217, 217, 0.234);
 }
 
 .writeImg

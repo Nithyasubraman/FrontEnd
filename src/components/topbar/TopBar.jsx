@@ -1,9 +1,21 @@
 import React from 'react'
 import "./topbar.css";
 import { Link } from 'react-router-dom';
+// import { Container, Form, Card, Row, Col, Button } from "react-bootstrap";
+import Cookies from 'js-cookie';
+
+
 
 function TopBar() {
   const user = false;
+
+  const handleLogout = () => {
+    Cookies.remove('userData');
+    window.location.href = '/login';
+    // logout();
+    // navigate('/login');
+  };
+
   return (
     <div className='top'>
       <div className="topLeft">
@@ -15,17 +27,48 @@ function TopBar() {
       <div className="topCenter">
         <ul className="topList">
           <li className='topListItem'>
-            <Link className='link' to="/" >HOME</Link>
+            <Link className='link' to="/home" >HOME</Link>
           </li>
-          <li className='topListItem'>
+          &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+          {/* <li className='topListItem'>
             <Link className='link' to="/">ABOUT</Link>
           </li>
           <li className='topListItem'>
             <Link className='link' to="/">CONTACT</Link>
-          </li>
+          </li> */}
           <li className='topListItem'>
-            <Link className='link' to="/write">WRITE</Link>
+            <Link className='link' to="/write">WRITE YOUR BLOG</Link>
           </li>
+          &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+          <li className='topListItem'>   
+          <Link className='link' to="/search"> SEARCH BLOGS </Link>
+               
+                &nbsp;&nbsp;
+                <a href="/search">
+              <i className="topSearchIcon fa-solid fa-magnifying-glass"></i>
+              </a>
+              </li>
+          {/* <li>   
+                <a href="/search">
+                Search Blogs
+              <i className="topSearchIcon fa-solid fa-magnifying-glass"></i>
+              </a>
+              </li> */}
+          {/* <li>
+          <div className="side-nav">
+            <br/>
+            <Form className="d-flex">
+              <Form.Control
+                type="search"
+                placeholder="Search"
+                className="me-2"
+                aria-label="Search"
+                
+              />
+              <i className="topSearchIcon fa-solid fa-magnifying-glass"></i>
+            </Form>
+          </div>
+          </li> */}
           {/* <Link className='link' to="/">LOGOUT</Link> */}
           <li className='topListItem'>
             {user && "LOGOUT"}
@@ -41,13 +84,9 @@ function TopBar() {
               alt="Profile" />
           ) : (
             <ul className='topList'>
-              <li>
-                <a href="/search">
-              <i className="topSearchIcon fa-solid fa-magnifying-glass"></i>
-              </a>
-              </li>
+              
               &nbsp;
-              <li className='topListItm'>
+              {/* <li className='topListItm'>
               <Link id='loginButton' className='link' to="/login">
                 LOGIN
               </Link>
@@ -56,7 +95,12 @@ function TopBar() {
               <Link id='registerButton' className='link' to="/register">
                 REGISTER
               </Link>
-              </li>
+              </li> */}
+{/* 
+              <li className='topListItm'>
+              <button id='logoutButton' onClick={handleLogout}>Logout</button>
+              </li> */}
+
               {/* <Link className='link' to="/register">
                 Register
               </Link> */}

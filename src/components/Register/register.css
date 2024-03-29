@@ -1,0 +1,58 @@
+.registration-app {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* background-color: rgba(135, 163, 222, 0.641); */
+    /* background-image: url('https://images.pexels.com/photos/235985/pexels-photo-235985.jpeg?auto=compress&cs=tinysrgb&w=600'); */
+    background-image: url('https://images.pexels.com/photos/82256/pexels-photo-82256.jpeg?auto=compress&cs=tinysrgb&w=600');
+    background-size: cover;
+    /* opacity: 0.5; */
+  }
+  
+  .registration-container {
+    width: 400px;
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    opacity: 0.8;
+    border-radius: 5px;
+    padding: 20px;
+    border-radius: 12px;
+  }
+  
+  .registerHeader {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .registerform-container {
+    margin-bottom: 20px;
+  }
+  
+  .registerform-container form input {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+  }
+  
+  .registerform-container form button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .registerform-container form button:hover {
+    background-color: #0056b3;
+  }
+  
+  p {
+    /* color: red; */
+    margin-bottom: 10px;
+  }
+  

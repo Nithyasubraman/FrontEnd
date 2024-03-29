@@ -1,124 +1,95 @@
 import React from 'react'
-import { useState,useEffect } from 'react';
-import axios from 'axios';
-import { NavLink ,useNavigate} from 'react-router-dom';
-// import recycle from './Images/recycle.png'
-// import './Signup.css'
+// import React, { useState } from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './register.css'
+import { useForm } from 'react-hook-form';
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
+import axios from "axios";
+import { NavLink } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
+// import Nav from 'react-bootstrap/Nav';
+// import Navbar from 'react-bootstrap/Navbar';
+// import Container from 'react-bootstrap/Container';
+// import PetsOutlinedIcon from '@mui/icons-material/PetsOutlined';
+// import { NavItem,Button} from 'react-bootstrap';
  
-// import Cookies from 'js-cookie';
-function Register() {
-    const initalvalues = { id:0, Name: "", Email: "", Password: "", ConfirmPassword: "" };
-    const [formValues, setformValues] = useState(initalvalues);
-    const [formErrors, setFormErrors] = useState({});
-    const [isSubmit, setIsSubmit] = useState(false);
-   
-   
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setformValues({ ...formValues, [name]: value })
+ 
+ 
+const schema = yup.object().shape(
+    {
+        name: yup.string().required('**Last name is required'),
+        email: yup.string().email('**Please enter the Valid email').required('**Email is required'),
+        password: yup.string().required().min(6, "**Minimun 6 chars is Required").max(14, "**Enter upto 14 chars only"),
+        confirmPassword: yup.string().oneOf([yup.ref("password"), null])
     }
-    const navigate = useNavigate();
-    useEffect(() => {
-        console.log(formErrors);
-        if (Object.keys(formErrors).length === 0 && isSubmit) {
-            console.log(formValues);
-        }
-    }, [formErrors])
+)
  
-    const handleSubmit = async(e) => {
-        e.preventDefault();
-        setFormErrors(validate(formValues));
-        setIsSubmit(true);
-        try {
-            const response = await axios.post('http://localhost:5122/api/Login/UserSignup', formValues);
-            console.log('User created:', response.data);
-            
-            // window.alert('User Registered successfuly');
-       
-            navigate('/login');
+const Register = () => {
+    const Usenavigate = useNavigate();
+    const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(schema) });
  
-        }
+    console.log(errors);
  
-        catch (error) {
+    // function to handle form submission
+    const onSubmit = data => {
+        axios.post('http://localhost:5122/api/Login/UserSignup', data)
+            .then(response => {
+                // Handle success
  
-            console.error('Error:', error);
  
-        }
-    }
+                window.alert("Registration successfull", response.data);
+                Usenavigate('/Login')
+                // console.log('Registration successful', response.data);
+            })
+            .catch(error => {
+                // Handle error
+                console.error('Registration failed', error);
+            });
  
-    const validate = (values) => {
-        const errors = {};
+        // console.log(data);
  
-        const regex = /\b[A-Za-z0-9._%+-]+@gmail\.com\b/;
+    };
  
-        if (!values.Name) {
-            errors.Name = "Name is required!";
-        }
-        if (!values.Email) {
-            errors.Email = "Email is required!";
-        }
-        if (!values.Password) {
-          errors.Password = "Password is required!";
-      
-        } else if (!regex.test(values.Email)) {
-            errors.Email = "This is not a valid email format!"
-        }
-        if (!values.Password) {
-            errors.Password = "Password is required!";
-        } else if (values.Password.length < 4) {
-            errors.Password = "Password must be more than 4 charcters"
-        } else if (values.Password.length > 10) {
-            errors.Password = "Password must be exceed more than 10 charcters"
-        }
-       
-        if (!values.ConfirmPassword) {
-            errors.ConfirmPassword = "Confirm Password is required";
-        } else if (values.ConfirmPassword !== values.Password) {
-            errors.ConfirmPassword = "Confirm password and password should be same";
-        }
-        // if (Object.keys(formErrors).length === 0 && isSubmit){
-        //     navigate('/userdash')
-        // }
-        return errors;
-    }
-  
+ 
+ 
     return (
-        <div class='container' style={{border:"none"}}>
-            <div className='signup'>
-                <form onSubmit={handleSubmit} className='form'>
-                    <h1 style={{ display: 'flex', justifyContent: 'center' }}>Signup</h1>
-                    <hr></hr>
-                    <div className="form-floating ">
-                        <input type="text" class="form-control" id="Name" name="Name" value={formValues.Name} onChange={handleChange} />
-                        <label htmlFor="name">Name</label>
-                    </div><p>{formErrors.Name}</p>
-                    <div className="form-floating ">
-                        <input type="email" class="form-control" id="Email" name="Email" value={formValues.Email} onChange={handleChange} />
-                        <label htmlFor="email">Email</label>
-                    </div><p>{formErrors.Email}</p>
+        <>
+            <div className='registration-app'>
+                <div className="registration-container">
+                    <div className='registerHeader'>
+                        <h2 data-testid='registration-heading'>Registration</h2>
+                    </div>
+                    <div className='registerform-container'>
+                        <form onSubmit={handleSubmit(onSubmit)} >
+                            <input {...register('name')} placeholder='First Name.....' data-testid='namefield'></input>
+                            <p data-testid="nameerrormessage">{errors.name?.message}</p>
  
-                    <div class="form-floating ">
-                        <input type="password" class="form-control" id="Password" name="Password" value={formValues.Password} onChange={handleChange}/>
-                        <label htmlFor="password">Password</label>
-                    </div><p>{formErrors.Password}</p>
-                    <div class="form-floating">
-                        <input type="password" class="form-control" id="ConfirmPassword" name="ConfirmPassword" value={formValues.ConfirmPassword} onChange={handleChange}/>
-                        <label htmlFor="confirmpassword">ConfirmPassword</label>
-                    </div><p>{formErrors.ConfirmPassword}</p>
-               
-                   
-                    <button class="btn btn-primary">Submit</button>
-                    <NavLink to='/login' style={{display:'flex',justifyContent:'flex-end'}}>Already Have an account? Login!</NavLink>
-                </form>
+                            <input {...register('email')} type='email' placeholder='Email.....' data-testid='emailfield'></input>
+                            <p>{errors.email?.message}</p>
+ 
+                            <input {...register('password')} type='password' placeholder='Password.....' data-testid='passwordfield'></input>
+                            <p>{errors.password?.message}</p>
+ 
+                            <input {...register('confirmPassword')} type='password' placeholder='Confirm Password.....' data-testid='confirmPasswordfield'></input>
+                            <p>{errors.confirmPassword?.message}</p>
+ 
+                            <button data-id="registerbutton" className='btn btn-primary'>Register!</button>
+                            <br/>
+                            <br/>
+                            <NavLink to='/login' style={{display:'flex',justifyContent:'flex-end'}}>Already Have an account? Login!</NavLink>
+
+                        </form>
+<br></br>
+                        {/* <Link to="/"><button className='btn btn-success'>Back</button></Link> */}
+                    </div>
+                </div>
             </div>
-            {/* <div className='signup-post'>
-                <img src={recycle} alt='Signup' />
-            </div> */}
-        </div>
+        </>
     )
 }
  
-export default Register;
+export default Register
 
 
 
@@ -141,7 +112,7 @@ export default Register;
 //     Name: "",
 //     Email: "",
 //     Password: "",
-//     ConfirmPassword: "",
+//     confirmPassword: "",
 //   });
 
 //   const changeHandler = (e) => {
@@ -173,10 +144,10 @@ export default Register;
 //     } else if (values.Password.length > 10) {
 //       error.Password = "Password cannot exceed more than 10 characters";
 //     }
-//     if (!values.ConfirmPassword) {
-//       error.ConfirmPassword = "Confirm Password is required";
-//     } else if (values.ConfirmPassword !== values.Password) {
-//       error.ConfirmPassword = "Confirm password and password should be same";
+//     if (!values.confirmPassword) {
+//       error.confirmPassword = "Confirm Password is required";
+//     } else if (values.confirmPassword !== values.Password) {
+//       error.confirmPassword = "Confirm password and password should be same";
 //     }
 //     else{
 //       navigate('/login');
@@ -260,13 +231,13 @@ export default Register;
 //           <p className={basestyle.error}>{formErrors.Password}</p>
 //           <input
 //             type="password"
-//             name="ConfirmPassword"
-//             id="ConfirmPassword"
+//             name="confirmPassword"
+//             id="confirmPassword"
 //             placeholder="Confirm Password"
 //             onChange={changeHandler}
-//             value={user.ConfirmPassword}
+//             value={user.confirmPassword}
 //           />
-//           <p className={basestyle.error}>{formErrors.ConfirmPassword}</p>
+//           <p className={basestyle.error}>{formErrors.confirmPassword}</p>
           
 //           <button className={basestyle.button_common} onClick={signupHandler}>   
 //             Register
